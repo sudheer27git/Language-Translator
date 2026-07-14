@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lingua — language translator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="head">
+      <h1 class="wordmark">Lingua</h1>
+      <p class="sub">translate a phrase, keep the meaning</p>
+    </header>
+
+    <section class="panel">
+      <div class="lang-bar">
+        <div class="lang-select-wrap">
+          <label class="sr-only" for="fromLang">From language</label>
+          <select id="fromLang"></select>
+        </div>
+
+        <button id="swapBtn" class="swap-btn" aria-label="swap languages" title="swap languages">
+          <svg viewBox="0 0 24 24"><path d="M7 7h11l-3-3M17 17H6l3 3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <div class="lang-select-wrap">
+          <label class="sr-only" for="toLang">To language</label>
+          <select id="toLang"></select>
+        </div>
+      </div>
+
+      <div class="panes">
+        <div class="pane">
+          <textarea id="sourceText" maxlength="500" placeholder="Type something to translate…"></textarea>
+          <div class="pane-foot">
+            <button class="mini-btn" id="speakSource" aria-label="listen to source text">
+              <svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor"/></svg>
+            </button>
+            <span class="char-count"><span id="charCount">0</span>/500</span>
+          </div>
+        </div>
+
+        <div class="pane pane-target">
+          <div id="targetText" class="target-text" aria-live="polite"></div>
+          <div class="pane-foot">
+            <button class="mini-btn" id="speakTarget" aria-label="listen to translation">
+              <svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor"/></svg>
+            </button>
+            <button class="mini-btn" id="copyBtn" aria-label="copy translation">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M5 15V5a2 2 0 012-2h10" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+            </button>
+            <span class="status" id="status"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="history-section">
+      <div class="history-head">
+        <h2>Recent</h2>
+        <button id="clearHistory" class="text-btn">clear</button>
+      </div>
+      <ul id="historyList" class="history-list"></ul>
+    </section>
+
+    <footer class="foot">
+      <p>translations powered by a free public API — occasional inaccuracies possible, especially for idioms.</p>
+    </footer>
+  </main>
+
+<script src="script.js"></script>
+</body>
+</html>
